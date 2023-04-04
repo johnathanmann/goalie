@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const Project = require("../models/Project");
+const Goal = require("../models/Goal");
 const { signToken } = require("../utils/auth");
 
 async function getAllUsers(req, res) {
@@ -20,7 +20,7 @@ async function getUserById(req, res) {
     const singleUser = await User.findById(req.params.userId)
       .select("-__v")
       .select("-password")
-      .populate("projects");
+      .populate("goals");
     res.status(200).json(singleUser);
   } catch (err) {
     console.error(err);
@@ -28,11 +28,11 @@ async function getUserById(req, res) {
   }
 }
 
-async function getUserProjects(req, res) {
+async function getUserGoals(req, res) {
   try {
-    var allProjects = await User.findById(req.params.userId).populate("projects");
-    allProjects = allProjects.projects;
-    res.status(200).json({allProjects});
+    var allGoals = await User.findById(req.params.userId).populate("goals");
+    allGoals = allGoals.goals;
+    res.status(200).json({allGoals});
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -71,7 +71,7 @@ async function deleteUser(req, res) {
     const deletedUser = await User.findOneAndRemove({ _id: req.params.userId })
       .select("-__v")
       .select("-password");
-    await Project.deleteMany({ _id: { $in: deletedUser.posts } });
+    await Goal.deleteMany({ _id: { $in: deletedUser.posts } });
     res.status(200).json(deletedUser);
   } catch (err) {
     console.error(err);
@@ -116,5 +116,5 @@ module.exports = {
   updateUser,
   deleteUser,
   loginUser,
-  getUserProjects
+  getUserGoals
 };
