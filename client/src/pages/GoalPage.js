@@ -45,13 +45,20 @@ import Auth from "../utils/auth";
 
     return (
       <div className="container" id="goalpage">
-        <form>
-              <label>Goal Name:</label>
-            <textarea id="goalName"/>
-              <label>Goal Description:</label>
-            <textarea id="goalDescription"/>
-            <button onClick={() =>goalForm()} id="goalSubmit" type="submit">Submit</button>
-        </form>
+        <div className="row">
+            <div className="col-md-3">
+            <form>
+                <label>Goal Name:</label>
+                    <input id="goalName"/>
+                <label>Goal Description:</label>
+                    <input id="goalDescription"/>
+                <button onClick={() =>goalForm()} id="goalSubmit" type="submit">Submit</button>
+            </form>
+            </div>
+            <div className="col-md-9">
+
+            </div>
+        </div>
       </div>
     );
   }
