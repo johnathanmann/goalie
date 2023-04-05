@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Auth from "../utils/auth";
+import Goals from "../components/Goals";
   
   export default function GoalPage() {
+    const [allGoals, setAllGoals] = useState([]);
     const [singleUser, setSingleUser] = useState([]);
     const [userID, setUserID] = useState([]);
+    const userProfile = Auth.getProfile();
+    const userId = userProfile.data._id
+
+    async function getGoals() {
+      const response = await fetch(`/api/users/goals/${userId}`);
+      const allGoals = await response.json();
+  
+      setAllGoals(allGoals.allGoals);
+    };
   
     async function getUser() {
       const tokenData = Auth.getProfile();
@@ -18,6 +29,9 @@ import Auth from "../utils/auth";
       getUser();
     });
 
+    useEffect(() => {
+      getGoals();
+    }, []);
     async function goalForm() {
 
         const goalName = document.getElementById('goalName').value;
@@ -42,7 +56,6 @@ import Auth from "../utils/auth";
           }
         }
         };
-
     return (
       <div className="container" id="goalpage">
         <div className="row">
@@ -56,7 +69,7 @@ import Auth from "../utils/auth";
             </form>
             </div>
             <div className="col-md-9">
-
+              <Goals allGoals={allGoals}/>
             </div>
         </div>
       </div>
