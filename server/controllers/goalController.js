@@ -68,6 +68,16 @@ async function deleteGoal(req, res) {
   }
 }
 
+async function addValue(req, res) {
+  try {
+    const updatedGoal = await Goal.updateOne({ _id: req.params.goalId }, { $inc: { value: 1 }});
+    
+    res.status(200).json(updatedGoal);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+}
 
 
 module.exports = {
@@ -75,5 +85,6 @@ module.exports = {
   getGoalById,
   createGoal,
   updateGoal,
-  deleteGoal
+  deleteGoal,
+  addValue
 };

@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export default function SingleGoal({
   allGoals
 }) {
@@ -20,13 +22,16 @@ export default function SingleGoal({
     }
     };
 
+    
+    
 
 return(
   allGoals.map((goal) => (
     <div key={goal._id}>
       <h1>{goal.name}</h1>
       <h1>{goal.description}</h1>
-      <h1>{goal.value}</h1>
+      <h1 id="goalValue">{goal.value}</h1>
+      <button onClick={() => addValue(goal._id)} >+</button>
       <button onClick={() => deleteGoal(goal._id)} >Delete</button>
     </div>
   ))
