@@ -79,6 +79,17 @@ async function addValue(req, res) {
   }
 }
 
+async function subtractValue(req, res) {
+  try {
+    const updatedGoal = await Goal.updateOne({ _id: req.params.goalId }, { $inc: { value: -1 }});
+    
+    res.status(200).json(updatedGoal);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+}
+
 
 module.exports = {
   getAllGoals,
@@ -86,5 +97,6 @@ module.exports = {
   createGoal,
   updateGoal,
   deleteGoal,
-  addValue
+  addValue,
+  subtractValue
 };
