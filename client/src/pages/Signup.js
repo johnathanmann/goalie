@@ -30,7 +30,6 @@ export default function Login() {
   return (
     <div className="row" id="signup">
         <h2>Signup</h2>
-
         <form onSubmit={handleSignup} className="form signup-form">
           <div className="form-group">
             <label htmlFor="name-signup">Name:</label>

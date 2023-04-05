@@ -1,5 +1,3 @@
-import "../styles/styles.css";
-
 export default function Homepage(){
     return(
         <div>
