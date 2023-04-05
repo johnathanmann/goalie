@@ -22,7 +22,7 @@ const userSchema = new Schema({
   goals: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Goals",
+      ref: "Goal",
     },
   ]
 });
