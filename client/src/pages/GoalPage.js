@@ -28,6 +28,31 @@ import Goals from "../components/Goals";
     useEffect(() => {
       getUser();
     });
+    async function goalForm() {
+
+      const goalName = document.getElementById('goalName').value;
+      const goalDescription = document.getElementById('goalDescription').value;
+      const click = true;
+      if (click) {
+        const response = await fetch('/api/goals', {
+          method: 'POST',
+          body: JSON.stringify({
+            user: singleUser._id,
+            name: goalName,
+            value: 0,
+            description: goalDescription
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (response.ok) {
+          console.log('Post Posted');
+        } else {
+          alert(response.statusText);
+        }
+      }
+      };
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -35,30 +60,6 @@ import Goals from "../components/Goals";
       }, 1000);
       return () => clearInterval(interval);
     }, []);
-    async function goalForm() {
-
-        const goalName = document.getElementById('goalName').value;
-        const goalDescription = document.getElementById('goalDescription').value;
-        if (goalName, goalDescription) {
-          const response = await fetch('/api/goals', {
-            method: 'POST',
-            body: JSON.stringify({
-              user: singleUser._id,
-              name: goalName,
-              value: 0,
-              description: goalDescription
-            }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-          if (response.ok) {
-            console.log('Post Posted');
-          } else {
-            alert(response.statusText);
-          }
-        }
-        };
         
     return (
       <div className="container" id="goalpage">
