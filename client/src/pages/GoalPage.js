@@ -30,7 +30,10 @@ import Goals from "../components/Goals";
     });
 
     useEffect(() => {
-      getGoals();
+      const interval = setInterval(() => {
+        getGoals();
+      }, 1000);
+      return () => clearInterval(interval);
     }, []);
     async function goalForm() {
 
@@ -56,6 +59,7 @@ import Goals from "../components/Goals";
           }
         }
         };
+        
     return (
       <div className="container" id="goalpage">
         <div className="row">

@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 export default function SingleGoal({
   allGoals
 }) {
@@ -22,7 +20,41 @@ export default function SingleGoal({
     }
     };
 
-    
+    async function addValue(goalId){
+      const click = true;
+    // Make post to database so we can show it on the site
+    if (click) {
+      const response = await fetch(`/api/goals/addValue/${goalId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        console.log('Value added');
+      } else {
+        alert(response.statusText);
+      }
+    }
+    }
+
+    async function subtractValue(goalId){
+      const click = true;
+    // Make post to database so we can show it on the site
+    if (click) {
+      const response = await fetch(`/api/goals/subtractValue/${goalId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        console.log('Value Subtracted');
+      } else {
+        alert(response.statusText);
+      }
+    }
+    }
     
 
 return(
