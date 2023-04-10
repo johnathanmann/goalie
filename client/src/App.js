@@ -10,7 +10,7 @@ import {
   import Goalpage from "./pages/GoalPage";
   import Nav from "./components/Nav"
   import "../src/styles/styles.css";
-
+  import "../src/styles/theme.css";
   
   export default function App() {
     return (
