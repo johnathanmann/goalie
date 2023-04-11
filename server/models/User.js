@@ -25,6 +25,9 @@ const userSchema = new Schema({
   goalsCompleted: {
       type: Number
   },
+  daysLogged: {
+      type: Number
+  },
   goals: [
     {
       type: Schema.Types.ObjectId,

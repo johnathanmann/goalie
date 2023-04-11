@@ -37,6 +37,12 @@ export default function SingleGoal({
         },
       });
       if (response.ok) {
+        const response = await fetch(`/api/users/goals/daysLogged/${userId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
         console.log('Value added');
       } else {
         alert(response.statusText);

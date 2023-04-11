@@ -111,8 +111,8 @@ async function loginUser(req, res) {
 
 async function addGoalValue(req, res) {
   try {
-    const updatedUSer = await User.updateOne({ _id: req.params.userId }, { $inc: { goalsMade: 1 }});
-    res.status(200).json(updatedUSer);
+    const updatedUser = await User.updateOne({ _id: req.params.userId }, { $inc: { goalsMade: 1 }});
+    res.status(200).json(updatedUser);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -121,9 +121,20 @@ async function addGoalValue(req, res) {
 
 async function addCompletedValue(req, res) {
   try {
-    const updatedUSer = await User.updateOne({ _id: req.params.userId }, { $inc: { goalsCompleted: 1 }});
+    const updatedUser = await User.updateOne({ _id: req.params.userId }, { $inc: { goalsCompleted: 1 }});
     
-    res.status(200).json(updatedUSer);
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+}
+
+async function addDaysLogged(req, res) {
+  try {
+    const updatedUser = await User.updateOne({ _id: req.params.userId }, { $inc: { daysLogged: 1 }});
+    
+    res.status(200).json(updatedUser);
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -139,5 +150,6 @@ module.exports = {
   loginUser,
   getUserGoals,
   addGoalValue,
-  addCompletedValue
+  addCompletedValue,
+  addDaysLogged
 };

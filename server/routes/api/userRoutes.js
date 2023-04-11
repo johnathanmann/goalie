@@ -8,7 +8,8 @@ const {
   loginUser,
   getUserGoals,
   addCompletedValue,
-  addGoalValue
+  addGoalValue,
+  addDaysLogged
 } = require("../../controllers/userController");
 
 // /api/users
@@ -22,5 +23,7 @@ router.route("/goals/:userId").get(getUserGoals);
 router.route("/goals/completed/:userId").put(addCompletedValue);
 // /api/users/goals/goalsMade/:userId
 router.route("/goals/goalsMade/:userId").put(addGoalValue);
+// /api/users/goals/daysLogged/:userId
+router.route("/goals/daysLogged/:userId").put(addDaysLogged);
 
 module.exports = router;
