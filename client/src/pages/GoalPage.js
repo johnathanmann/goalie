@@ -47,6 +47,12 @@ import Goals from "../components/Goals";
           },
         });
         if (response.ok) {
+          const response = await fetch(`/api/users/goals/goalsMade/${userId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
           console.log('Post Posted');
         } else {
           alert(response.statusText);

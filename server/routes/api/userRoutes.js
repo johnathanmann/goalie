@@ -6,7 +6,9 @@ const {
   updateUser,
   deleteUser,
   loginUser,
-  getUserGoals
+  getUserGoals,
+  addCompletedValue,
+  addGoalValue
 } = require("../../controllers/userController");
 
 // /api/users
@@ -15,6 +17,10 @@ router.route("/login").post(loginUser);
 // /api/users/:userId
 router.route("/:userId").get(getUserById).put(updateUser).delete(deleteUser);
 // /api/users/goals/:userId
-router.route("/goals/:userId").get(getUserGoals)
+router.route("/goals/:userId").get(getUserGoals);
+// /api/users/goals/completed/:userId
+router.route("/goals/completed/:userId").put(addCompletedValue);
+// /api/users/goals/goalsMade/:userId
+router.route("/goals/goalsMade/:userId").put(addGoalValue);
 
 module.exports = router;

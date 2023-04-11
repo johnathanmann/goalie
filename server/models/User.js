@@ -20,12 +20,10 @@ const userSchema = new Schema({
     minlength: 5,
   },
   goalsMade: {
-    type: Number,
-    required: true
+    type: Number
   },
   goalsCompleted: {
-      type: String,
-      required: true
+      type: Number
   },
   goals: [
     {

@@ -6,7 +6,7 @@ export default function Login() {
   const [signupData, setSignupData] = useState({
     password: "",
     email: "",
-    username: "",
+    username: ""
   })
 
   const handleInputChangeSignup = (event) => {

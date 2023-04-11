@@ -109,6 +109,27 @@ async function loginUser(req, res) {
   }
 }
 
+async function addGoalValue(req, res) {
+  try {
+    const updatedUSer = await User.updateOne({ _id: req.params.userId }, { $inc: { goalsMade: 1 }});
+    res.status(200).json(updatedUSer);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+}
+
+async function addCompletedValue(req, res) {
+  try {
+    const updatedUSer = await User.updateOne({ _id: req.params.userId }, { $inc: { completedGoals: 1 }});
+    
+    res.status(200).json(updatedUSer);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -116,5 +137,7 @@ module.exports = {
   updateUser,
   deleteUser,
   loginUser,
-  getUserGoals
+  getUserGoals,
+  addGoalValue,
+  addCompletedValue
 };
