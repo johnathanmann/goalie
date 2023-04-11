@@ -19,6 +19,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  goalsMade: {
+    type: Number,
+    required: true
+  },
+  goalsCompleted: {
+      type: String,
+      required: true
+  },
   goals: [
     {
       type: Schema.Types.ObjectId,
