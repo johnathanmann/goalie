@@ -33,11 +33,12 @@ const Nav = () => {
   }
 
   return (
-    <button
-      className={theme === "dark" ? clickedClass : ""}
+    <label class="switch">
+    <input type="checkbox" className={theme === "dark" ? clickedClass : ""}
       id="darkMode"
-      onClick={e => switchTheme(e)}
-    >Theme</button>
+      onClick={e => switchTheme(e)}/>
+    <span class="slider round"></span>
+    </label>
   )
 }
 
