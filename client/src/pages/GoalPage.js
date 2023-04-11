@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Auth from "../utils/auth";
 import Goals from "../components/Goals";
+import Icons from "../components/Icons";
   
   export default function GoalPage() {
     const [allGoals, setAllGoals] = useState([]);
@@ -72,6 +73,7 @@ import Goals from "../components/Goals";
         <div className="row">
             <div className="col-md-3">
             <form>
+              <Icons />
                 <label>Goal Name:</label>
                     <input id="goalName"/>
                 <label>Goal Description:</label>
