@@ -121,7 +121,7 @@ async function addGoalValue(req, res) {
 
 async function addCompletedValue(req, res) {
   try {
-    const updatedUSer = await User.updateOne({ _id: req.params.userId }, { $inc: { completedGoals: 1 }});
+    const updatedUSer = await User.updateOne({ _id: req.params.userId }, { $inc: { goalsCompleted: 1 }});
     
     res.status(200).json(updatedUSer);
   } catch (err) {
